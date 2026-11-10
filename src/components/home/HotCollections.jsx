@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getHotCollections } from "../../services/api";
 import "../../css/components/HotCollections.css";
-import "keen-slider/keen-slider.min.css";
-import { useKeenSlider } from "keen-slider/react";
+import ReusableSlider from "../ReusableSlider";
 
 // Individual collection card
 const CollectionCard = ({ collection }) => {
@@ -61,68 +60,7 @@ const CollectionSkeleton = () => {
   );
 };
 
-// Actual Keen Slider component
-const CollectionsSlider = ({ collections }) => {
-  const [sliderRef, instanceRef] = useKeenSlider({
-    loop: true,
-    slides: {
-      perView: 4,
-      spacing: 20,
-    },
-    breakpoints: {
-      "(max-width: 1171px)": {
-        slides: {
-          perView: 3,
-          spacing: 15,
-        },
-      },
-      "(max-width: 991px)": {
-        slides: {
-          perView: 2,
-          spacing: 15,
-        },
-      },
-      "(max-width: 765px)": {
-        slides: {
-          perView: 1,
-          spacing: 10,
-        },
-      },
-    },
-  });
 
-  return (
-    <div className="collections-slider-wrapper">
-
-      <div ref={sliderRef} className="keen-slider">
-        {collections.map((collection) => (
-          <div className="keen-slider__slide" key={collection.id}>
-            <CollectionCard collection={collection} />
-          </div>
-        ))}
-      </div>
-
-      <div className="collections-slider-controls">
-        <button
-          type="button"
-          onClick={() => instanceRef.current?.prev()}
-          aria-label="Previous collections"
-        >
-          &#10094;
-        </button>
-
-        <button
-          type="button"
-          onClick={() => instanceRef.current?.next()}
-          aria-label="Next collections"
-        >
-          &#10095;
-        </button>
-      </div>
-
-    </div>
-  );
-};
 
 // Main HotCollections component
 const HotCollections = () => {
@@ -168,7 +106,13 @@ const HotCollections = () => {
             ))}
           </div>
         ) : (
-          <CollectionsSlider collections={collections} />
+          <ReusableSlider>
+            {collections.map((collection) => (
+              <div className="keen-slider__slide" key={collection.id}>
+                <CollectionCard collection={collection} />
+              </div>
+            ))}
+          </ReusableSlider>
         )}
 
       </div>
