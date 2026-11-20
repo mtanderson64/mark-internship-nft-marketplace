@@ -8,3 +8,9 @@ export const getHotCollections = () => {
 
 export const getNewItems = () =>
   axios.get(`${API_URL}/newItems`);
+
+export const getTopSellers = () =>
+  axios.get(`${API_URL}/topSellers`);
+
+export const getAuthorById = (authorId) =>
+  axios.get(`${API_URL}/authors?author=${authorId}`);
