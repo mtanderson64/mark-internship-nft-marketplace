@@ -1,0 +1,106 @@
+
+.author_list .skeleton {
+  background: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.author_list .skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: top-seller-skeleton-loading 1.5s infinite;
+}
+
+@keyframes top-seller-skeleton-loading {
+  100% {
+    left: 100%;
+  }
+}
+
+.top-seller-skeleton-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.top-seller-skeleton-name {
+  width: 110px;
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.top-seller-skeleton-price {
+  width: 60px;
+  height: 13px;
+}
+
+/* Author profile skeleton */
+
+.author-profile-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.author-profile-skeleton-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.author-profile-skeleton-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.author-profile-skeleton-name {
+  width: 180px;
+  height: 24px;
+}
+
+.author-profile-skeleton-username {
+  width: 120px;
+  height: 16px;
+}
+
+.author-profile-skeleton-wallet {
+  width: 250px;
+  height: 14px;
+}
+.author-profile-skeleton-followers {
+  width: 100px;
+  height: 16px;
+  margin-bottom: 12px;
+}
+/* Author NFT skeleton */
+
+.author-nft-skeleton-image {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.author-nft-skeleton-title {
+  width: 70%;
+  height: 18px;
+  margin-bottom: 12px;
+}
+
+.author-nft-skeleton-price {
+  width: 35%;
+  height: 15px;
+}
